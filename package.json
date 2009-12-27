@@ -1,0 +1,8 @@
+{
+    "name": "parenscript",
+    "preload": ["parenscript/loader"],
+    "description": "Parenscript is a small Lispy language that compiles to JavaScript. This is the Narwhal module that integrates ParenScript with Narwhal.",
+    "keywords": ["javascript", "language", "lisp", "macros", "macro"],
+    "author": "Nick Fitzgerald (http://fitzgeraldnick.com) <fitzgen@gmail.com>",
+    "license": "MIT",
+}
