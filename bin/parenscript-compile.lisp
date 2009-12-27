@@ -1,5 +1,3 @@
-(format *error-output* "inside parenscript-compile.lisp")
-
 ;; Disable debugger
 (setf *invoke-debugger-hook*
       (lambda (condition hook)
@@ -9,11 +7,9 @@
         (format *error-output* "~%~%; Error: ~A~%" condition)
         (quit)))
 
-(format *error-output* "past disabling debug")
-
-(require :parenscript)
-
-(format *error-output* "required parenscript")
+;; Redirect the require messages to stderr.
+(let ((*standard-output* *error-output*))
+  (require :parenscript))
 
 (defun join (strings &optional (joiner " "))
   "Join a list of strings together with the ``joiner``."
