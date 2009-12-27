@@ -19,11 +19,13 @@
 (defun main ()
   (destructuring-bind (flag &rest args) (cdr *posix-argv*)
     (write-line (cond
+                  ((string= "--stdin" flag)
+                   (ps:ps-compile-stream *standard-input*))
                   ((string= "--file" flag)
                    (ps:ps-compile-file (first args)))
                   ((string= "--eval" flag)
                    (with-input-from-string (stream (first args))
                                            (ps:ps-compile-stream stream)))
-                  (t (error "Must pass either '--eval' or '--file' flag."))))))
+                  (t (error "Must pass '--stdin', '--eval' or '--file' flag."))))))
 
 (main)
